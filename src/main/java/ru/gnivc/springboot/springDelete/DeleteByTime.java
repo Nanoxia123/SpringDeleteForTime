@@ -15,8 +15,6 @@ public class DeleteByTime {
     @Autowired
     DataBaseRepository dataBaseRepository;
 
-    private static final Logger logger = LogManager.getLogger("ru.springboot.springDelete.repository.DeleteByTime");
-
     @Scheduled(cron = "${firstFixedRate}")
     public void deletionEveryHour(){
         dataBaseRepository.deleteData();
