@@ -17,19 +17,19 @@ public class DataBaseRepository {
     private final JdbcTemplate jdbcTemplate;
     private final int queryDelSqlParam;
     private final int limitDelSqlParam;
-    private final String tableSqlParam;
-    private final String primalKeyColumnSqlParam;
-    private final String arithmeticSignSqlParam;
-    private final String secondColumnSqlParam;
+    private final String tableDelSqlParam;
+    private final String primalKeyColumnDelSqlParam;
+    private final String arithmeticSignDelSqlParam;
+    private final String secondColumnDelSqlParam;
 
     @Autowired
     public DataBaseRepository(JdbcTemplate jdbcTemplate,
                               @Value("${queryDelSqlParam}") int queryDelSqlParam,
                               @Value("${limitDelSqlParam}") int limitDelSqlParam,
-                              @Value("${tableSqlParam}") String tableSqlParam,
-                              @Value("${primalKeyColumnSqlParam}") String primalKeyColumnSqlParam,
-                              @Value("${arithmeticSignSqlParam}") String arithmeticSignSqlParam,
-                              @Value("${secondColumnSqlParam}") String secondColumnSqlParam) {
+                              @Value("${tableDelSqlParam}") String tableDelSqlParam,
+                              @Value("${primalKeyColumnDelSqlParam}") String primalKeyColumnDelSqlParam,
+                              @Value("${arithmeticSignDelSqlParam}") String arithmeticSignDelSqlParam,
+                              @Value("${secondColumnDelSqlParam}") String secondColumnDelSqlParam) {
         this.jdbcTemplate = jdbcTemplate;
         this.queryDelSqlParam = queryDelSqlParam;
         this.limitDelSqlParam = limitDelSqlParam;
@@ -42,12 +42,12 @@ public class DataBaseRepository {
 
     public boolean deleteData() {
         String limitedDeletionRequest = String.format("DELETE FROM %s WHERE %s IN (SELECT %s FROM %s WHERE %s %s ? LIMIT ?)",
-                tableSqlParam, primalKeyColumnSqlParam, primalKeyColumnSqlParam, tableSqlParam, secondColumnSqlParam, arithmeticSignSqlParam);
+                tableDelSqlParam, primalKeyColumnSqlParam, primalKeyColumnSqlParam, tableDelSqlParam, secondColumnSqlParam, arithmeticSignSqlParam);
         try {
             jdbcTemplate.update(limitedDeletionRequest, queryDelSqlParam, limitDelSqlParam);
             logger.info("SQL запрос {} был успешно выполнен. Использовались следующие данные: " +
                             "Таблица: {}, Условие: {}, Второе условие: {}, Арифметический знак: {}. Лимит на количество удаляемых строк: {}",
-                    limitedDeletionRequest, tableSqlParam, primalKeyColumnSqlParam, secondColumnSqlParam, arithmeticSignSqlParam, limitDelSqlParam);
+                    limitedDeletionRequest, tableDelSqlParam, primalKeyColumnDelSqlParam, secondColumnDelSqlParam, arithmeticSignDelSqlParam, limitDelDelSqlParam);
             return true;
         }
         catch (DataAccessException exception) {
