@@ -19,23 +19,16 @@ public class DeleteByTime {
 
     private static final Logger logger = LogManager.getLogger("ru.springboot.springDelete.repository.DeleteByTime");
 
-    @Scheduled(cron = "${fixedRateEveryHour}")
+    @Scheduled(cron = "${firstFixedRate}")
     public void deletionEveryHour(){
         dataBaseRepository.deleteData();
-        logger.info("Функция 'Удаления каждый час' успешно выполнена. Следующее удаление через час");
+        logger.info("Функция 'Первого удаления' успешно выполнена.");
     }
 
-    @Scheduled(cron = "${everyTwelveHoursOfTheNightRate}")
+    @Scheduled(cron = "${secondfirstFixedRate}")
     public void removalAtTwelveAtNight(){
-        LocalTime time = LocalTime.now();
-        if (time.equals(LocalTime.MIDNIGHT)) {
             dataBaseRepository.deleteData();
-            logger.info("Функция 'Удаление в 12 ночи' успешно выполнена.");
-        }
-        else{
-            logger.info("Функция 'Удаление в 12 ночи' не выполнена, так как сейчас не 12 ночи. Текущее время {}", LocalTime.now());
-
-        }
+            logger.info("Функция 'Второго удаления' успешно выполнена.");
     }
 
 
