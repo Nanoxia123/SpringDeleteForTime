@@ -51,7 +51,7 @@ public class DataBaseRepository {
             return true;
         }
         catch (DataAccessException exception) {
-            logger.error("Не работает");
+            logger.error("Произошла ошибка при выполнении запроса. Параметры были заданы не верно. sql запрос {}", limitedDeletionRequest);
             return false;
         }
 
