@@ -14,10 +14,10 @@ queryDelSqlParam: ${AGE}
 limitDelSqlParam: 1
 fixedRateEveryHour: "0 0 * * * *"
 everyTwelveHoursOfTheNightRate: "0 0 0 * * *"
-tableSqlParam: tablet
-primalKeyColumnSqlParam: id
-secondColumnSqlParam: age
-arithmeticSignSqlParam: =
+tableDelSqlParam: tablet
+primalKeyColumnDelSqlParam: id
+secondColumnDelSqlParam: age
+arithmeticSignDelSqlParam: =
 
 logging:
     config: src/main/resources/log4j.xml
