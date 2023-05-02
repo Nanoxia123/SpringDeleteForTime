@@ -33,10 +33,10 @@ public class DataBaseRepository {
         this.jdbcTemplate = jdbcTemplate;
         this.queryDelSqlParam = queryDelSqlParam;
         this.limitDelSqlParam = limitDelSqlParam;
-        this.tableSqlParam = tableSqlParam;
-        this.primalKeyColumnSqlParam = primalKeyColumnSqlParam;
-        this.arithmeticSignSqlParam = arithmeticSignSqlParam;
-        this.secondColumnSqlParam = secondColumnSqlParam;
+        this.tableDelSqlParam = tableDelSqlParam;
+        this.primalKeyColumnDelSqlParam = primalKeyColumnDelSqlParam;
+        this.arithmeticSignDelSqlParam = arithmeticSignDelSqlParam;
+        this.secondColumnDelSqlParam = secondColumnDelSqlParam;
     }
 
 
