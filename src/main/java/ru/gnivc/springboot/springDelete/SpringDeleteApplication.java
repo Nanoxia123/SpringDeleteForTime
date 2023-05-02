@@ -17,7 +17,7 @@ public class SpringDeleteApplication {
 		app.startDeletion();
 	}
 	public void startDeletion(){
-		deleteByTime.deletionEveryHour();
-		deleteByTime.removalAtTwelveAtNight();
+		deleteByTime.firstFixedRate();
+		deleteByTime.secondFixedRate();
 	}
 }
