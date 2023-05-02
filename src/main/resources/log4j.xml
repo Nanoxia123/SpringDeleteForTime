@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Configuration status="WARN">
+    <Appenders>
+
+        <Console name="Console" target="SYSTEM_OUT">
+            <PatternLayout pattern="%d{HH:mm:ss.SSS} %-5level %logger{36} - %msg%n"/>
+        </Console>
+
+        <RollingFile name="RollingFile" fileName="logs/springDelete.log"
+                     filePattern="logs/springDelete-%d{yyyy-MM-dd}-%i.log.rar">
+
+            <PatternLayout>
+                <charset>UTF-8</charset>
+                <pattern>%d{dd.MM.yyyy HH:mm:ss.SSS} %-5level - %msg%n</pattern>
+            </PatternLayout>
+
+            <Policies>
+                <OnStartupTriggeringPolicy />
+                <TimeBasedTriggeringPolicy />
+                <SizeBasedTriggeringPolicy size="100 MB" />
+            </Policies>
+
+            <DefaultRolloverStrategy fileindex="nomax" compressionLevel="6" tempCompressedFilePattern="springDelete-%i-log">
+                <Delete basePath="logs" maxDepth="2">
+                    <IfFileName glob="*/springDelete-*.log.rar" />
+                    <IfLastModified age="30d" />
+                </Delete>
+            </DefaultRolloverStrategy>
+
+        </RollingFile>
+
+    </Appenders>
+    <Loggers>
+
+        <Logger name="org.springframework" level="INFO" additivity="false">
+            <AppenderRef ref="RollingFile"/>
+        </Logger>
+
+        <Root level="debug">
+            <AppenderRef ref="Console" level="info"/>
+            <AppenderRef ref="RollingFile"/>
+        </Root>
+    </Loggers>
+</Configuration>

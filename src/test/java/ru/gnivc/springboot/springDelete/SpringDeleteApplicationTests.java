@@ -1,4 +1,4 @@
-package ru.gnivc.nikita.springDelete;
+package ru.gnivc.springboot.springDelete;
 
 import org.junit.jupiter.api.Test;
 import org.springframework.boot.test.context.SpringBootTest;
