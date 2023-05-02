@@ -12,6 +12,9 @@ import ru.gnivc.springboot.springDelete.repository.DataBaseRepository;
 @Component
 @EnableScheduling
 public class DeleteByTime {
+    
+    private static final Logger logger = LogManager.getLogger("ru.springboot.springDelete.repository.DeleteByTime");
+    
     @Autowired
     DataBaseRepository dataBaseRepository;
 
@@ -20,9 +23,10 @@ public class DeleteByTime {
         dataBaseRepository.deleteData();
     }
 
-    @Scheduled(cron = "${secondfirstFixedRate}")
+    @Scheduled(cron = "${secondFixedRate}")
     public void removalAtTwelveAtNight(){
             dataBaseRepository.deleteData();
+      
     }
 
 
