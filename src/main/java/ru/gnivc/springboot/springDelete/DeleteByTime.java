@@ -9,8 +9,6 @@ import org.springframework.scheduling.annotation.Scheduled;
 import org.springframework.stereotype.Component;
 import ru.gnivc.springboot.springDelete.repository.DataBaseRepository;
 
-import java.time.LocalTime;
-
 @Component
 @EnableScheduling
 public class DeleteByTime {
@@ -22,13 +20,11 @@ public class DeleteByTime {
     @Scheduled(cron = "${firstFixedRate}")
     public void deletionEveryHour(){
         dataBaseRepository.deleteData();
-        logger.info("Функция 'Первого удаления' успешно выполнена.");
     }
 
     @Scheduled(cron = "${secondfirstFixedRate}")
     public void removalAtTwelveAtNight(){
             dataBaseRepository.deleteData();
-            logger.info("Функция 'Второго удаления' успешно выполнена.");
     }
 
 
