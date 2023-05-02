@@ -40,7 +40,7 @@ public class DataBaseRepository {
     }
 
 
-    public boolean deleteData() {
+    public void deleteData() {
         String limitedDeletionRequest = String.format("DELETE FROM %s WHERE %s IN (SELECT %s FROM %s WHERE %s %s ? LIMIT ?)",
                 tableDelSqlParam, primalKeyColumnDelSqlParam, primalKeyColumnDelSqlParam, tableDelSqlParam, secondColumnDelSqlParam, arithmeticSignDelSqlParam);
         try {
@@ -48,11 +48,9 @@ public class DataBaseRepository {
             logger.info("SQL запрос {} был успешно выполнен. Использовались следующие данные: " +
                             "Таблица: {}, Условие: {}, Второе условие: {}, Арифметический знак: {}. Лимит на количество удаляемых строк: {}",
                     limitedDeletionRequest, tableDelSqlParam, primalKeyColumnDelSqlParam, secondColumnDelSqlParam, arithmeticSignDelSqlParam, limitDelSqlParam);
-            return true;
         }
         catch (DataAccessException exception) {
             logger.error("Произошла ошибка при выполнении запроса. Параметры были заданы не верно. sql запрос {}", limitedDeletionRequest);
-            return false;
         }
 
     }
