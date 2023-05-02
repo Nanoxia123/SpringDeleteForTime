@@ -42,7 +42,7 @@ public class DataBaseRepository {
 
     public boolean deleteData() {
         String limitedDeletionRequest = String.format("DELETE FROM %s WHERE %s IN (SELECT %s FROM %s WHERE %s %s ? LIMIT ?)",
-                tableDelSqlParam, primalKeyColumnSqlParam, primalKeyColumnSqlParam, tableDelSqlParam, secondColumnSqlParam, arithmeticSignSqlParam);
+                tableDelSqlParam, primalKeyColumnDelSqlParam, primalKeyColumnDelSqlParam, tableDelSqlParam, secondColumnDelSqlParam, arithmeticSignDelSqlParam);
         try {
             jdbcTemplate.update(limitedDeletionRequest, queryDelSqlParam, limitDelSqlParam);
             logger.info("SQL запрос {} был успешно выполнен. Использовались следующие данные: " +
