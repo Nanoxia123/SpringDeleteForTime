@@ -47,7 +47,7 @@ public class DataBaseRepository {
             jdbcTemplate.update(limitedDeletionRequest, queryDelSqlParam, limitDelSqlParam);
             logger.info("SQL запрос {} был успешно выполнен. Использовались следующие данные: " +
                             "Таблица: {}, Условие: {}, Второе условие: {}, Арифметический знак: {}. Лимит на количество удаляемых строк: {}",
-                    limitedDeletionRequest, tableDelSqlParam, primalKeyColumnDelSqlParam, secondColumnDelSqlParam, arithmeticSignDelSqlParam, limitDelDelSqlParam);
+                    limitedDeletionRequest, tableDelSqlParam, primalKeyColumnDelSqlParam, secondColumnDelSqlParam, arithmeticSignDelSqlParam, limitDelSqlParam);
             return true;
         }
         catch (DataAccessException exception) {
