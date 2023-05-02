@@ -12,8 +12,8 @@ spring:
 
 queryDelSqlParam: ${AGE}
 limitDelSqlParam: 1
-fixedRateEveryHour: "0 0 * * * *"
-everyTwelveHoursOfTheNightRate: "0 0 0 * * *"
+firstFixedRate: "0 0 * * * *"
+secondFixedRate: "0 0 0 * * *"
 tableDelSqlParam: tablet
 primalKeyColumnDelSqlParam: id
 secondColumnDelSqlParam: age
